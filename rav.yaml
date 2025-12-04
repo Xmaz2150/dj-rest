@@ -9,19 +9,19 @@ scripts:
     - venv/bin/python -m pip install -r requirements.txt
     - venv/bin/python -m pip install -r requirements.dev.txt
   makemigrations:
-    - venv/bin/python src/manage.py makemigrations
+    - venv/bin/python tutorial/manage.py makemigrations
   migrate:
-    - venv/bin/python src/manage.py migrate
+    - venv/bin/python tutorial/manage.py migrate
   dev:
-    - venv/bin/python src/manage.py runserver 8080
+    - venv/bin/python tutorial/manage.py runserver 8080
   test:
-    - cd src && ../venv/bin/python manage.py test
+    - cd tutorial && ../venv/bin/python manage.py test
   vendors_pull:
     # grab vendor files to serve via whitenoise
     # - venv/bin/rav download staticfiles_dev
-    - cd src && ../venv/bin/python manage.py vendors_pull
+    - cd tutorial && ../venv/bin/python manage.py vendors_pull
   collectstatic:
-    - cd src && ../venv/bin/python manage.py collectstatic --noinput
+    - cd tutorial && ../venv/bin/python manage.py collectstatic --noinput
   docker_build:
     - docker build -t dj-rest:latest .
   docker_stop:
@@ -47,7 +47,7 @@ downloads:
         url: https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.js
   staticfiles_dev:
     name: vendor
-    destination: src/staticfiles/vendors
+    destination: tutorial/staticfiles/vendors
     verbose: true
     raise_on_error: true
     overwrite: true
