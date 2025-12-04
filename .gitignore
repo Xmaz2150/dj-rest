@@ -6,3 +6,5 @@ tutorial/staticfiles/vendors
 local-cdn
 
 db.sqlite3
+
+*.env

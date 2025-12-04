@@ -1,2 +1,5 @@
 Django==5.2.9
 requests
+python-decouple
+psycopg[binary]
+dj-database-url
