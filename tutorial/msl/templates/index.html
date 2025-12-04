@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+ {% block content %}
+    <h1>welcome to diski!</h1>
+    <h1>Team A</h1>
+    <form method="post">
+        {% csrf_token %}{# IMPORTANT: CSRF token for security #}
+        {% for player in players %}
+            <input type="checkbox" name="selected_players" value="{{ player }}" id="{{ player }}"
+                {% if player in selected_players %}checked{% endif %}>
+            <label for="{{ player }}">{{ player }}</label><br>
+        {% endfor %}
+        <br>
+        <button type="submit">Update Squad</button>
+    </form>
+
+    {% if selected_players|length == 0 %}
+        <h2>Select squad</h2>
+    {% else %}
+        <h2>Current Squad:</h2>
+        <ul>
+            {% for player in selected_players %}
+                <li>{{ player }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+{% endblock %}
