@@ -33,8 +33,7 @@ CSRF_TRUSTED_ORIGINS=['https://localhost:8000']
 
 INSTALLED_APPS = [
     'rest_framework',
-    # both worked without import?
-    'quickstart',
+    # worked without import?
     'msl',
 
     "django.contrib.admin",
