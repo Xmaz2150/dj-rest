@@ -4,3 +4,5 @@ tutorial/staticfiles/vendors
 
 # ignore local static file root
 local-cdn
+
+db.sqlite3
