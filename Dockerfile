@@ -45,10 +45,11 @@ RUN pip install --upgrade pip
 RUN pip install -r /tmp/requirements.txt
 RUN pip install gunicorn rav --upgrade
 
-ARG DJANGO_SECRET_KEY
+# Set environment variables with defaults for build-time commands
+ARG DJANGO_SECRET_KEY=django-insecure-build-key-only
 ENV DJANGO_SECRET_KEY=${DJANGO_SECRET_KEY}
 
-ARG DJANGO_DEBUG=0
+ARG DJANGO_DEBUG=False
 ENV DJANGO_DEBUG=${DJANGO_DEBUG}
 
 
@@ -59,14 +60,11 @@ RUN rav download staticfiles_prod -f /tmp/rav.yaml
 # run any other commands that do not need the database
 # such as:
 
-ARG ALLOWED_HOSTS
-ENV ALLOWED_HOSTS=${ALLOWED_HOSTS}
+ARG ALLOWED_HOSTS="localhost"
 
-ARG CSRF_TRUSTED_ORIGINS
-ENV CSRF_TRUSTED_ORIGINS=${CSRF_TRUSTED_ORIGINS}
+ARG CSRF_TRUSTED_ORIGINS="http://localhost"
 
-ARG DATABASE_URL
-ENV DATABASE_URL=${DATABASE_URL}
+ARG DATABASE_URL=""
 
 RUN python manage.py vendor_pull
 RUN python manage.py collectstatic --noinput
