@@ -58,6 +58,16 @@ RUN rav download staticfiles_prod -f /tmp/rav.yaml
 # database isn't available during build
 # run any other commands that do not need the database
 # such as:
+
+ARG ALLOWED_HOSTS
+ENV ALLOWED_HOSTS=${ALLOWED_HOSTS}
+
+ARG CSRF_TRUSTED_ORIGINS
+ENV CSRF_TRUSTED_ORIGINS=${CSRF_TRUSTED_ORIGINS}
+
+ARG DATABASE_URL
+ENV DATABASE_URL=${DATABASE_URL}
+
 RUN python manage.py vendor_pull
 RUN python manage.py collectstatic --noinput
 # whitenoise -> s3
