@@ -25,16 +25,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 DJANGO_SECRET_KEY = config("DJANGO_SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config("DJANGO_DEBUG", cast=bool, default=False)
+DJANGO_DEBUG = config("DJANGO_DEBUG", cast=bool)
 
 ALLOWED_HOSTS = config("ALLOWED_HOSTS").split(",")
 CSRF_TRUSTED_ORIGINS = config("CSRF_TRUSTED_ORIGINS").split(",")
 
-if DEBUG:
+if DJANGO_DEBUG:
     ALLOWED_HOSTS += ["localhost", "127.0.0.1"]
     CSRF_TRUSTED_ORIGINS += ["http://localhost", "http://127.0.0.1"]
 
-print("DEBUG:", DEBUG)
+print("DJANGO_DEBUG:", DJANGO_DEBUG)
 print("ALLOWED_HOSTS:", ALLOWED_HOSTS)
 print("CSRF_TRUSTED_ORIGINS:", CSRF_TRUSTED_ORIGINS)
 
