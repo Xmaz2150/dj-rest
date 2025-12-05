@@ -48,8 +48,8 @@ RUN pip install gunicorn rav --upgrade
 ARG DJANGO_SECRET_KEY
 ENV DJANGO_SECRET_KEY=${DJANGO_SECRET_KEY}
 
-ARG DJANGO_DEBUG=0
-ENV DJANGO_DEBUG=${DJANGO_DEBUG}
+ARG DEBUG=False
+ENV DEBUG=${DEBUG}
 
 
 COPY ./rav.yaml /tmp/rav.yaml
